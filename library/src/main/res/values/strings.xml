@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Permissions Helper</string>
+    <string name="perms_static_header">Permissions Needed</string>
+    <string name="perms_static_info"><![CDATA[Xxx needs the following permissions to work correctly. Review them below:]]></string>
+    <string name="cancel">Cancel</string>
+    <string name="contnu">Continue</string>
+</resources>
