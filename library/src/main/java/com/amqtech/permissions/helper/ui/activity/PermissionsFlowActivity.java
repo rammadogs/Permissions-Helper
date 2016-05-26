@@ -1,17 +1,17 @@
 package com.amqtech.permissions.helper.ui.activity;
 
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 import android.widget.Toast;
 
-import com.amqtech.permissions.helper.objects.PermissionsFlow;
 import com.amqtech.permissions.helper.R;
 import com.amqtech.permissions.helper.objects.Permission;
+import com.amqtech.permissions.helper.objects.PermissionsFlow;
 import com.amqtech.permissions.helper.ui.adapter.PermissionsFlowAdapter;
 
 public class PermissionsFlowActivity extends AppCompatActivity {
@@ -20,8 +20,6 @@ public class PermissionsFlowActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private PermissionsFlowAdapter permissionsFlowAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
-    private TextView cancel, next;
 
 
     @Override
@@ -37,19 +35,26 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(permissionsFlowAdapter);
 
-        cancel = (TextView) findViewById(R.id.perms_flow_info);
-        next = (TextView) findViewById(R.id.continue_btn);
+        Button cancel = (Button) findViewById(R.id.cancel_btn);
+        Button next = (Button) findViewById(R.id.continue_btn);
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(), "Hi", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Toast.makeText(getBaseContext(), "Hi", Toast.LENGTH_SHORT).show();
+
+                for (Permission perm : permissions) {
+                    ActivityCompat.requestPermissions(PermissionsFlowActivity.this,
+                            new String[]{perm.getPermissionName()}, perm.getPermissions().getRequestCode());
+                }
 
             }
         });

@@ -13,7 +13,7 @@ public class Permission implements Serializable {
     private final String explanation;
 
     /**
-     * A user defined permission with the permission and an explanation.
+     * A user defined permission with the permission type and an explanation.
      * @param permission the permission.
      * @param explanation explanation of the permission.
      */

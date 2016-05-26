@@ -24,7 +24,7 @@ public enum Permissions implements Serializable {
     ACCESS_COARSE_LOCATION(Manifest.permission.ACCESS_COARSE_LOCATION, 371),
     RECORD_AUDIO(Manifest.permission.RECORD_AUDIO, 372),
     READ_PHONE_STATE(Manifest.permission.READ_PHONE_STATE, 373),
-    CALL_PHOONE(Manifest.permission.CALL_PHONE, 374),
+    CALL_PHONE(Manifest.permission.CALL_PHONE, 374),
     READ_CALL_LOG(Manifest.permission.READ_CALL_LOG, 375),
     WRITE_CALL_LOG(Manifest.permission.WRITE_CALL_LOG, 376),
     ADD_VOICEMAIL(Manifest.permission.ADD_VOICEMAIL, 377),
