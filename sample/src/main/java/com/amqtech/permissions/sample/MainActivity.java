@@ -1,14 +1,13 @@
 package com.amqtech.permissions.sample;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Toast;
 
 import com.amqtech.androidhelper.AndroidHelper;
+import com.amqtech.permissions.helper.objects.Permission;
 import com.amqtech.permissions.helper.objects.Permissions;
 import com.amqtech.permissions.helper.objects.PermissionsFlow;
-import com.amqtech.permissions.helper.objects.Permission;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,17 +22,17 @@ public class MainActivity extends AppCompatActivity {
                 .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
                 .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
                     @Override
-                    public void onPermissionGranted() {
+                    public void onPermissionGranted(Permission permission) {
                         // I want to show a toast here
                         // if the permission was granted
-                        AndroidHelper.shortToast(getBaseContext(), "Permission granted!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission "+ permission.getPermissionName() + " granted!");
                     }
 
                     @Override
-                    public void onPermissionDenied() {
+                    public void onPermissionDenied(Permission permission) {
                         // I want to show a toast here
                         // if the permission was denied
-                        AndroidHelper.shortToast(getBaseContext(), "Permission denied!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission" + permission.getPermissionName() + "denied!");
                     }
                 })
                 .launch();
@@ -44,17 +43,17 @@ public class MainActivity extends AppCompatActivity {
                 .withPermissions(new Permission(Permissions.READ_CONTACTS, "This app needs access to your contacts to improve results."))
                 .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
                     @Override
-                    public void onPermissionGranted() {
+                    public void onPermissionGranted(Permission permission) {
                         // I want to show a toast here
                         // if the permission was granted
-                        AndroidHelper.shortToast(getBaseContext(), "Permission granted!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission "+ permission.getPermissionName() + " granted!");
                     }
 
                     @Override
-                    public void onPermissionDenied() {
+                    public void onPermissionDenied(Permission permission) {
                         // I want to show a toast here
                         // if the permission was denied
-                        AndroidHelper.shortToast(getBaseContext(), "Permission denied!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission" + permission.getPermissionName() + "denied!");
                     }
                 })
                 .launch();
@@ -69,17 +68,17 @@ public class MainActivity extends AppCompatActivity {
                 .withPermissions(readCalendar, writeCalendar, camera)
                 .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
                     @Override
-                    public void onPermissionGranted() {
+                    public void onPermissionGranted(Permission permission) {
                         // I want to show a toast here
                         // if the permission was granted
-                        AndroidHelper.shortToast(getBaseContext(), "Permission granted!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission "+ permission.getPermissionName() + " granted!");
                     }
 
                     @Override
-                    public void onPermissionDenied() {
+                    public void onPermissionDenied(Permission permission) {
                         // I want to show a toast here
                         // if the permission was denied
-                        AndroidHelper.shortToast(getBaseContext(), "Permission denied!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission" + permission.getPermissionName() + "denied!");
                     }
                 })
                 .launch();
