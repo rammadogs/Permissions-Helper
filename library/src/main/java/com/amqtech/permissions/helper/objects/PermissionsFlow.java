@@ -6,13 +6,18 @@ import android.support.annotation.NonNull;
 
 import com.amqtech.permissions.helper.ui.activity.PermissionsFlowActivity;
 
-public class PermissionsFlow {
+import java.io.Serializable;
+
+public class PermissionsFlow implements Serializable {
 
     public static final String PERMISSIONS = "com.amqtech.permissions.helper.PERMISSIONS";
+    public static final String PERMISSIONS_FLOW = "com.amqtech.permissions.helper.PERMISSIONS_FLOW";
+
+    public static PermissionsFlow permissionsFlow;
 
     //Vars
     private Permission[] permissions;
-    private PermissionFlowCallback callback;
+    public PermissionFlowCallback callback;
     private Context launchContext;
 
     /**
@@ -46,8 +51,8 @@ public class PermissionsFlow {
      * Permissions Callback interface.
      */
     public interface PermissionFlowCallback {
-        void onPermissionGranted();
-        void onPermissionDenied();
+        void onPermissionGranted(Permission permission);
+        void onPermissionDenied(Permission permission);
     }
 
     /*
@@ -57,7 +62,7 @@ public class PermissionsFlow {
         if (permissions == null || permissions.length == 0) {
             throw new RuntimeException("You need to supply an array of explanations!");
         } else {
-
+            permissionsFlow = this;
             Intent permissionActivity = new Intent(launchContext, PermissionsFlowActivity.class);
             permissionActivity.putExtra(PERMISSIONS, permissions);
             permissionActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
