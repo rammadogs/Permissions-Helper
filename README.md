@@ -30,7 +30,7 @@ If you would like to view the Javadocs for this library, [click here.](https://c
 # Contributions
 If you'd like to contribute to this library, feel free to make a pull request with your changes. 
 
-# Developed By
+# Developer Info
 Andrew Quebe<br>
 [andrewquebe@amqtech.com](mailto:andrewquebe@amqtech.com)
 
