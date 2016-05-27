@@ -81,7 +81,6 @@ public class PermissionsFlow implements Serializable {
 
     /**
      * Stores a color resource to change the background color of the permissions activity.
-     *
      * @param color the background color.
      */
     public PermissionsFlow setBackgroundColor(int color) {
@@ -91,7 +90,6 @@ public class PermissionsFlow implements Serializable {
 
     /**
      * Stores a color resource to change the bar color on the permissions activity.
-     *
      * @param color the bar color.
      */
     public PermissionsFlow setBarColor(int color) {
@@ -101,7 +99,6 @@ public class PermissionsFlow implements Serializable {
 
     /**
      * Stores a color resource to change the text color on the permissions activity.
-     *
      * @param color the text color.
      */
     public PermissionsFlow setTextColor(int color) {
@@ -111,7 +108,6 @@ public class PermissionsFlow implements Serializable {
 
     /**
      * Stores a color resource to change the status bar color on the permissions activity.
-     *
      * @param color the status bar color.
      */
     @TargetApi(21)
@@ -122,7 +118,6 @@ public class PermissionsFlow implements Serializable {
 
     /**
      * Stores a a color resource to change the navigation bar color on the permissions activity.
-     *
      * @param color the nav bar color.
      */
     @TargetApi(21)
@@ -131,6 +126,11 @@ public class PermissionsFlow implements Serializable {
         return this;
     }
 
+    /**
+     * Sets whether or not the statusbar icons are dark. Set to true when using a light status bar color.
+     *
+     * @param value true or false.
+     */
     @TargetApi(23)
     public PermissionsFlow isStatusBarLight(boolean value) {
         lightStatusBar = value;
@@ -152,6 +152,7 @@ public class PermissionsFlow implements Serializable {
             permissionActivity.putExtra(TEXT_COLOR, textColor);
             permissionActivity.putExtra(STATUS_BAR_COLOR, statusBarColor);
             permissionActivity.putExtra(NAVIGATION_BAR_COLOR, navBarColor);
+            permissionActivity.putExtra(LIGHT_STATUS_BAR, lightStatusBar);
             permissionActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             launchContext.startActivity(permissionActivity);
         }
