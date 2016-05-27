@@ -1,5 +1,6 @@
 package com.amqtech.permissions.sample;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,22 +20,26 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchLocationPermsFlow(View view) {
         new PermissionsFlow(getBaseContext())
+                .withAppName(getResources().getString(R.string.app_name))
                 .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
                 .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
                     @Override
                     public void onPermissionGranted(Permission permission) {
-                        // I want to show a toast here
                         // if the permission was granted
-                        AndroidHelper.shortToast(getBaseContext(), "Permission "+ permission.getPermissionName() + " granted!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission " + permission.getPermissionName() + " granted!");
                     }
 
                     @Override
                     public void onPermissionDenied(Permission permission) {
-                        // I want to show a toast here
                         // if the permission was denied
-                        AndroidHelper.shortToast(getBaseContext(), "Permission" + permission.getPermissionName() + "denied!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission " + permission.getPermissionName() + " denied!");
                     }
                 })
+                .setBackgroundColor(Color.parseColor("#3F51B5"))
+                .setBarColor(Color.parseColor("#3F51B5"))
+                .setTextColor(Color.parseColor("#EEEEEE"))
+                .setStatusBarColor(Color.parseColor("#3F51B5"))
+                .setNavBarColor(Color.parseColor("#3F51B5"))
                 .launch();
     }
 
@@ -53,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onPermissionDenied(Permission permission) {
                         // I want to show a toast here
                         // if the permission was denied
-                        AndroidHelper.shortToast(getBaseContext(), "Permission" + permission.getPermissionName() + "denied!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission " + permission.getPermissionName() + " denied!");
                     }
                 })
                 .launch();
@@ -78,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onPermissionDenied(Permission permission) {
                         // I want to show a toast here
                         // if the permission was denied
-                        AndroidHelper.shortToast(getBaseContext(), "Permission" + permission.getPermissionName() + "denied!");
+                        AndroidHelper.shortToast(getBaseContext(), "Permission " + permission.getPermissionName() + " denied!");
                     }
                 })
                 .launch();

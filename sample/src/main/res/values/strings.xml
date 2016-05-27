@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Permissions Helper Sample</string>
+    <string name="app_name">Perms Sample</string>
     <string name="launch_tip">Sample Location Permission</string>
     <string name="launch_tip2">Sample Contacts Permission</string>
     <string name="launch_tip3">Sample Multiple Permissions</string>

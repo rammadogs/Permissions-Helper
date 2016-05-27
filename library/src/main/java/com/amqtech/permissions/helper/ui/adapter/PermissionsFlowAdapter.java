@@ -17,8 +17,11 @@ public class PermissionsFlowAdapter extends RecyclerView.Adapter<PermissionsFlow
 
     private final Permission[] permissions;
 
-    public PermissionsFlowAdapter(Permission[] permissions) {
+    private int mColor;
+
+    public PermissionsFlowAdapter(Permission[] permissions, int color) {
         this.permissions = permissions;
+        this.mColor = color;
     }
 
     @Override
@@ -48,6 +51,9 @@ public class PermissionsFlowAdapter extends RecyclerView.Adapter<PermissionsFlow
             super(itemView);
             permissionName = (TextView) itemView.findViewById(R.id.permission_name);
             permissionDesc = (TextView) itemView.findViewById(R.id.permission_desc);
+
+            permissionName.setTextColor(mColor);
+            permissionDesc.setTextColor(mColor);
         }
 
     }
