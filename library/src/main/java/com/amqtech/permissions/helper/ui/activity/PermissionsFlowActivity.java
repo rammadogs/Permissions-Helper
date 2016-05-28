@@ -21,7 +21,7 @@ import android.widget.TextView;
 
 import com.amqtech.permissions.helper.R;
 import com.amqtech.permissions.helper.objects.Permission;
-import com.amqtech.permissions.helper.objects.PermissionsFlow;
+import com.amqtech.permissions.helper.objects.PermissionsActivity;
 import com.amqtech.permissions.helper.ui.adapter.PermissionsFlowAdapter;
 
 public class PermissionsFlowActivity extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class PermissionsFlowActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        permissions = (Permission[]) getIntent().getExtras().getSerializable(PermissionsFlow.PERMISSIONS);
+        permissions = (Permission[]) getIntent().getExtras().getSerializable(PermissionsActivity.PERMISSIONS);
 
         if (permissions == null || permissions.length == 0)
             throw new RuntimeException("No permissions!");
@@ -45,10 +45,10 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(darkenColor(getIntent().getExtras().getInt(PermissionsFlow.STATUS_BAR_COLOR), 0.8f));
-        window.setNavigationBarColor(darkenColor(getIntent().getExtras().getInt(PermissionsFlow.NAVIGATION_BAR_COLOR), 0.8f));
+        window.setStatusBarColor(darkenColor(getIntent().getExtras().getInt(PermissionsActivity.STATUS_BAR_COLOR), 0.8f));
+        window.setNavigationBarColor(darkenColor(getIntent().getExtras().getInt(PermissionsActivity.NAVIGATION_BAR_COLOR), 0.8f));
 
-        if (getIntent().getExtras().getBoolean(PermissionsFlow.LIGHT_STATUS_BAR)) {
+        if (getIntent().getExtras().getBoolean(PermissionsActivity.LIGHT_STATUS_BAR)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 getWindow().getDecorView().setSystemUiVisibility(
                         View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
@@ -58,24 +58,24 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_permissions_flow);
 
         TextView infoTV = (TextView) findViewById(R.id.perms_flow_info);
-        infoTV.setText(PermissionsFlow.APP_NAME
+        infoTV.setText(PermissionsActivity.APP_NAME
                 + " " + getResources().getString(R.string.perms_static_info));
-        infoTV.setTextColor(getIntent().getExtras().getInt(PermissionsFlow.TEXT_COLOR));
+        infoTV.setTextColor(getIntent().getExtras().getInt(PermissionsActivity.TEXT_COLOR));
 
         RelativeLayout rel = (RelativeLayout) findViewById(R.id.perms_bg);
-        rel.setBackgroundColor(getIntent().getExtras().getInt(PermissionsFlow.BG_COLOR));
+        rel.setBackgroundColor(getIntent().getExtras().getInt(PermissionsActivity.BG_COLOR));
 
         LinearLayout ll = (LinearLayout) findViewById(R.id.button_bar);
-        ll.setBackgroundColor(getIntent().getExtras().getInt(PermissionsFlow.BAR_COLOR));
+        ll.setBackgroundColor(getIntent().getExtras().getInt(PermissionsActivity.BAR_COLOR));
 
         TextView header = (TextView) findViewById(R.id.perms_flow_header);
-        header.setTextColor(getIntent().getExtras().getInt(PermissionsFlow.TEXT_COLOR));
+        header.setTextColor(getIntent().getExtras().getInt(PermissionsActivity.TEXT_COLOR));
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.perms_rv);
         recyclerView.setHasFixedSize(true);
 
         PermissionsFlowAdapter permissionsFlowAdapter = new PermissionsFlowAdapter(permissions,
-                getIntent().getExtras().getInt(PermissionsFlow.TEXT_COLOR));
+                getIntent().getExtras().getInt(PermissionsActivity.TEXT_COLOR));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(permissionsFlowAdapter);
@@ -89,7 +89,7 @@ public class PermissionsFlowActivity extends AppCompatActivity {
                 finish();
             }
         });
-        cancel.setTextColor(getIntent().getExtras().getInt(PermissionsFlow.TEXT_COLOR));
+        cancel.setTextColor(getIntent().getExtras().getInt(PermissionsActivity.TEXT_COLOR));
 
         next.setOnClickListener(new View.OnClickListener() {
             @TargetApi(Build.VERSION_CODES.M)
@@ -102,7 +102,7 @@ public class PermissionsFlowActivity extends AppCompatActivity {
                 requestPermissions(permissionNames, PERM_REQUEST_CODE);
             }
         });
-        next.setTextColor(getIntent().getExtras().getInt(PermissionsFlow.TEXT_COLOR));
+        next.setTextColor(getIntent().getExtras().getInt(PermissionsActivity.TEXT_COLOR));
     }
 
     @Override
@@ -110,9 +110,9 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         Log.d("Log", "onRequestPermissionsResult()");
         for(int i = 0; i < permissions.length; i++) {
             if (grantResults[i] == PackageManager.PERMISSION_GRANTED)
-                PermissionsFlow.permissionsFlow.callback.onPermissionGranted(getMatchingPermission(permissions[i]));
+                PermissionsActivity.permissionsActivity.callback.onPermissionGranted(getMatchingPermission(permissions[i]));
             else if (grantResults[i] == PackageManager.PERMISSION_DENIED)
-                PermissionsFlow.permissionsFlow.callback.onPermissionDenied(getMatchingPermission(permissions[i]));
+                PermissionsActivity.permissionsActivity.callback.onPermissionDenied(getMatchingPermission(permissions[i]));
         }
         finish();
     }

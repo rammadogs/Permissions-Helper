@@ -10,7 +10,7 @@ import com.amqtech.permissions.helper.ui.activity.PermissionsFlowActivity;
 
 import java.io.Serializable;
 
-public class PermissionsFlow implements Serializable {
+public class PermissionsActivity implements Serializable {
 
     public static final String PERMISSIONS = "com.amqtech.permissions.helper.PERMISSIONS";
     public static final String BG_COLOR = "background_color";
@@ -21,7 +21,7 @@ public class PermissionsFlow implements Serializable {
     public static final String LIGHT_STATUS_BAR = "light_status_bar";
     public static String APP_NAME = "";
 
-    public static PermissionsFlow permissionsFlow;
+    public static PermissionsActivity permissionsActivity;
 
     //Vars
     private Permission[] permissions;
@@ -38,7 +38,7 @@ public class PermissionsFlow implements Serializable {
     /**
      * Default Constructor
      */
-    public PermissionsFlow(Context context) {
+    public PermissionsActivity(Context context) {
         this.launchContext = context;
     }
 
@@ -46,7 +46,7 @@ public class PermissionsFlow implements Serializable {
      * Stores the app name to be applied in the activity.
      * @param appName the app name.
      */
-    public PermissionsFlow withAppName(@NonNull String appName) {
+    public PermissionsActivity withAppName(@NonNull String appName) {
         APP_NAME = appName;
         return this;
     }
@@ -56,7 +56,7 @@ public class PermissionsFlow implements Serializable {
      *
      * @param permissions an array of the requested permissions.
      */
-    public PermissionsFlow withPermissions(@NonNull Permission... permissions){
+    public PermissionsActivity withPermissions(@NonNull Permission... permissions) {
         this.permissions = permissions;
         return this;
     }
@@ -66,7 +66,7 @@ public class PermissionsFlow implements Serializable {
      * @param callback the callback.
      * @return callback.
      */
-    public PermissionsFlow withPermissionFlowCallback(PermissionFlowCallback callback){
+    public PermissionsActivity withPermissionFlowCallback(PermissionFlowCallback callback) {
         this.callback = callback;
         return this;
     }
@@ -83,7 +83,7 @@ public class PermissionsFlow implements Serializable {
      * Stores a color resource to change the background color of the permissions activity.
      * @param color the background color.
      */
-    public PermissionsFlow setBackgroundColor(int color) {
+    public PermissionsActivity setBackgroundColor(int color) {
         bgColor = color;
         return this;
     }
@@ -92,7 +92,7 @@ public class PermissionsFlow implements Serializable {
      * Stores a color resource to change the bar color on the permissions activity.
      * @param color the bar color.
      */
-    public PermissionsFlow setBarColor(int color) {
+    public PermissionsActivity setBarColor(int color) {
         barColor = color;
         return this;
     }
@@ -101,7 +101,7 @@ public class PermissionsFlow implements Serializable {
      * Stores a color resource to change the text color on the permissions activity.
      * @param color the text color.
      */
-    public PermissionsFlow setTextColor(int color) {
+    public PermissionsActivity setTextColor(int color) {
         textColor = color;
         return this;
     }
@@ -111,7 +111,7 @@ public class PermissionsFlow implements Serializable {
      * @param color the status bar color.
      */
     @TargetApi(21)
-    public PermissionsFlow setStatusBarColor(int color) {
+    public PermissionsActivity setStatusBarColor(int color) {
         statusBarColor = color;
         return this;
     }
@@ -121,7 +121,7 @@ public class PermissionsFlow implements Serializable {
      * @param color the nav bar color.
      */
     @TargetApi(21)
-    public PermissionsFlow setNavBarColor(int color) {
+    public PermissionsActivity setNavBarColor(int color) {
         navBarColor = color;
         return this;
     }
@@ -132,7 +132,7 @@ public class PermissionsFlow implements Serializable {
      * @param value true or false.
      */
     @TargetApi(23)
-    public PermissionsFlow isStatusBarLight(boolean value) {
+    public PermissionsActivity isStatusBarLight(boolean value) {
         lightStatusBar = value;
         return this;
     }
@@ -144,7 +144,7 @@ public class PermissionsFlow implements Serializable {
         if (permissions == null || permissions.length == 0) {
             throw new RuntimeException("You need to supply an array of explanations!");
         } else {
-            permissionsFlow = this;
+            permissionsActivity = this;
             Intent permissionActivity = new Intent(launchContext, PermissionsFlowActivity.class);
             permissionActivity.putExtra(PERMISSIONS, permissions);
             permissionActivity.putExtra(BG_COLOR, bgColor);

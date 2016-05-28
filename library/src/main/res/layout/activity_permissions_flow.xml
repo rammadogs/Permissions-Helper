@@ -41,10 +41,12 @@
             android:id="@+id/perms_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="20dp"
             android:paddingBottom="@dimen/info_btm_padding"
             android:paddingLeft="@dimen/perms_flow_left_padding"
             android:paddingRight="@dimen/perms_flow_right_padding"
-            android:layout_below="@id/perms_flow_info"/>
+            android:layout_below="@id/perms_flow_info"
+            android:layout_marginBottom="50dp" />
 
         <LinearLayout
             android:id="@+id/button_bar"

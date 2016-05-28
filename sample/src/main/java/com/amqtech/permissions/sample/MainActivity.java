@@ -8,7 +8,7 @@ import android.view.View;
 import com.amqtech.androidhelper.AndroidHelper;
 import com.amqtech.permissions.helper.objects.Permission;
 import com.amqtech.permissions.helper.objects.Permissions;
-import com.amqtech.permissions.helper.objects.PermissionsFlow;
+import com.amqtech.permissions.helper.objects.PermissionsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,10 +19,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchLocationPermsFlow(View view) {
-        new PermissionsFlow(getBaseContext())
+        new PermissionsActivity(getBaseContext())
                 .withAppName(getResources().getString(R.string.app_name))
                 .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
-                .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
+                .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
                     @Override
                     public void onPermissionGranted(Permission permission) {
                         // if the permission was granted
@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchContactsPermsFlow(View view) {
-        new PermissionsFlow(getBaseContext())
+        new PermissionsActivity(getBaseContext())
                 .withPermissions(new Permission(Permissions.READ_CONTACTS, "This app needs access to your contacts to improve results."))
-                .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
+                .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
                     @Override
                     public void onPermissionGranted(Permission permission) {
                         // I want to show a toast here
@@ -65,13 +65,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchMultiplePermsFlow(View view) {
-        Permission readCalendar = new Permission(Permissions.READ_CALENDAR, "This app needs to read your calendar.");
-        Permission writeCalendar = new Permission(Permissions.WRITE_CALENDAR, "This app needs to write to your calendar to make new events.");
-        Permission camera = new Permission(Permissions.CAMERA, "This app needs access to your camera so it can take pictures.");
+        Permission readCalendar = new Permission(Permissions.READ_CALENDAR,
+                Permissions.READ_CALENDAR_EXPLANATION);
+        Permission writeCalendar = new Permission(Permissions.WRITE_CALENDAR,
+                Permissions.WRITE_CALENDAR_EXPLANATION);
+        Permission camera = new Permission(Permissions.CAMERA,
+                Permissions.CAMERA_EXPLANATION);
+        Permission writeContacts = new Permission(Permissions.WRITE_CONTACTS,
+                Permissions.WRITE_CONTACTS_EXPLANATION);
+        Permission location = new Permission(Permissions.ACCESS_FINE_LOCATION,
+                Permissions.ACCESS_FINE_LOCATION_EXPLANATION);
+        Permission audio = new Permission(Permissions.RECORD_AUDIO,
+                Permissions.RECORD_AUDIO_EXPLANATION);
+        Permission phone = new Permission(Permissions.READ_PHONE_STATE,
+                Permissions.READ_PHONE_STATE_EXPLANATION);
+        Permission sensors = new Permission(Permissions.BODY_SENSORS,
+                Permissions.BODY_SENSORS_EXPLANATION);
+        Permission sms = new Permission(Permissions.SEND_SMS,
+                Permissions.SEND_SMS_EXPLANATION);
+        Permission storage = new Permission(Permissions.WRITE_EXTERNAL_STORAGE,
+                Permissions.WRITE_EXTERNAL_STORAGE_EXPLANATION);
 
-        new PermissionsFlow(getBaseContext())
-                .withPermissions(readCalendar, writeCalendar, camera)
-                .withPermissionFlowCallback(new PermissionsFlow.PermissionFlowCallback() {
+        new PermissionsActivity(getBaseContext())
+                .withAppName(getResources().getString(R.string.app_name))
+                .withPermissions(readCalendar, writeCalendar, writeContacts, location, camera, audio, phone, sensors, sms, storage)
+                .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
                     @Override
                     public void onPermissionGranted(Permission permission) {
                         // I want to show a toast here
