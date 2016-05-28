@@ -1,4 +1,5 @@
-# Permissions-Helper [![](https://jitpack.io/v/Andrew-Quebe/Android-Helper.svg)](https://jitpack.io/#Andrew-Quebe/Android-Helper)
+# Permissions-Helper [![](https://jitpack.io/v/Andrew-Quebe/Permissions-Helper.svg)](https://jitpack.io/#Andrew-Quebe/Permissions-Helper)
+Helper)
 A library that generates an activity based on the required permissions for your app. It loads the permissions into a list and will request them upon continuing through the activity flow.
 
 # Compile in your Project
