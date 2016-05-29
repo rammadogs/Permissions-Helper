@@ -25,7 +25,7 @@ dependencies {
 Coming soon!
 
 # Java Documentation
-If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/tree/master/javadoc)
+If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/master/javadoc/index.html)
 
 # Contributions
 If you'd like to contribute to this library, feel free to make a pull request with your changes. 
