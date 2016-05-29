@@ -25,7 +25,7 @@ dependencies {
 To launch the permissions activity, simply write the following code:
 
 ``` java
-// 
+// Sample set up that explains to the user that you need access to device location.
 new PermissionsActivity(getBaseContext())
         .withAppName(getResources().getString(R.string.app_name))
         .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
