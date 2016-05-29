@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setBackgroundColor(Color.parseColor("#3F51B5"))
                 .setBarColor(Color.parseColor("#3F51B5"))
-                .setTextColor(Color.parseColor("#EEEEEE"))
+                .setMainTextColor(Color.parseColor("#EEEEEE"))
                 .setStatusBarColor(Color.parseColor("#3F51B5"))
                 .setNavBarColor(Color.parseColor("#3F51B5"))
                 .launch();
@@ -61,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
                         AndroidHelper.shortToast(getBaseContext(), "Permission " + permission.getPermissionName() + " denied!");
                     }
                 })
+                .setStatusBarColor(Color.parseColor("#ffffff"))
+                .isStatusBarLight(true)
+                .setBackgroundColor(Color.parseColor("#ffffff"))
+                .setBarColor(Color.parseColor("#ffffff"))
+                .setMainTextColor(Color.parseColor("#444444"))
+                .setBarTextColor(Color.parseColor("#444444"))
+                .setNavBarColor(Color.parseColor("#ffffff"))
+                .setIconColor(Color.parseColor("#444444"))
                 .launch();
     }
 

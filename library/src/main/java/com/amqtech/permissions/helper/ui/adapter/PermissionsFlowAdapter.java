@@ -18,16 +18,18 @@ public class PermissionsFlowAdapter extends RecyclerView.Adapter<PermissionsFlow
 
     private final Permission[] permissions;
 
-    private int mColor;
+    private int textColor;
+    private int tintColor;
 
-    public PermissionsFlowAdapter(Permission[] permissions, int color) {
+    public PermissionsFlowAdapter(Permission[] permissions, int textColor, int tintColor) {
         this.permissions = permissions;
-        this.mColor = color;
+        this.textColor = textColor;
+        this.tintColor = tintColor;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permission, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_permission, parent, false);
         return new ViewHolder(v);
     }
 
@@ -177,8 +179,9 @@ public class PermissionsFlowAdapter extends RecyclerView.Adapter<PermissionsFlow
             permissionName = (TextView) itemView.findViewById(R.id.permission_name);
             permissionDesc = (TextView) itemView.findViewById(R.id.permission_desc);
 
-            permissionName.setTextColor(mColor);
-            permissionDesc.setTextColor(mColor);
+            permissionIcon.setColorFilter(tintColor);
+            permissionName.setTextColor(textColor);
+            permissionDesc.setTextColor(textColor);
         }
 
     }

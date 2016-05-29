@@ -15,10 +15,12 @@ public class PermissionsActivity implements Serializable {
     public static final String PERMISSIONS = "com.amqtech.permissions.helper.PERMISSIONS";
     public static final String BG_COLOR = "background_color";
     public static final String BAR_COLOR = "bar_color";
-    public static final String TEXT_COLOR = "text_color";
+    public static final String MAIN_TEXT_COLOR = "main_text_color";
+    public static final String BAR_TEXT_COLOR = "bar_text_color";
     public static final String STATUS_BAR_COLOR = "status_bar_color";
     public static final String NAVIGATION_BAR_COLOR = "nav_bar_color";
     public static final String LIGHT_STATUS_BAR = "light_status_bar";
+    public static final String ICON_COLOR = "icon_color";
     public static String APP_NAME = "";
 
     public static PermissionsActivity permissionsActivity;
@@ -30,10 +32,12 @@ public class PermissionsActivity implements Serializable {
 
     private int bgColor = Color.parseColor("#009688");
     private int barColor = Color.parseColor("#009688");
-    private int textColor = Color.parseColor("#ffffff");
+    private int mainTextColor = Color.parseColor("#ffffff");
+    private int barTextColor = Color.parseColor("#ffffff");
     private int statusBarColor = Color.parseColor("#007065");
     private int navBarColor = Color.parseColor("#007065");
     private boolean lightStatusBar = false;
+    private int iconColor = Color.parseColor("#ffffff");
 
     /**
      * Default Constructor
@@ -98,11 +102,31 @@ public class PermissionsActivity implements Serializable {
     }
 
     /**
+     * Stores a color resource to change the bar color on the permissions activity.
+     *
+     * @param color the bar color.
+     */
+    public PermissionsActivity setIconColor(int color) {
+        iconColor = color;
+        return this;
+    }
+
+    /**
      * Stores a color resource to change the text color on the permissions activity.
      * @param color the text color.
      */
-    public PermissionsActivity setTextColor(int color) {
-        textColor = color;
+    public PermissionsActivity setMainTextColor(int color) {
+        mainTextColor = color;
+        return this;
+    }
+
+    /**
+     * Stores a color resource to change the bar text color on the permissions activity.
+     *
+     * @param color the text color.
+     */
+    public PermissionsActivity setBarTextColor(int color) {
+        barTextColor = color;
         return this;
     }
 
@@ -149,10 +173,12 @@ public class PermissionsActivity implements Serializable {
             permissionActivity.putExtra(PERMISSIONS, permissions);
             permissionActivity.putExtra(BG_COLOR, bgColor);
             permissionActivity.putExtra(BAR_COLOR, barColor);
-            permissionActivity.putExtra(TEXT_COLOR, textColor);
+            permissionActivity.putExtra(MAIN_TEXT_COLOR, mainTextColor);
+            permissionActivity.putExtra(BAR_TEXT_COLOR, barTextColor);
             permissionActivity.putExtra(STATUS_BAR_COLOR, statusBarColor);
             permissionActivity.putExtra(NAVIGATION_BAR_COLOR, navBarColor);
             permissionActivity.putExtra(LIGHT_STATUS_BAR, lightStatusBar);
+            permissionActivity.putExtra(ICON_COLOR, iconColor);
             permissionActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             launchContext.startActivity(permissionActivity);
         }
