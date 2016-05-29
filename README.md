@@ -17,7 +17,7 @@ Next, add the dependency in your module:
 
 ```
 dependencies {
-	compile 'com.github.Andrew-Quebe:Permissions-Helper:v1.0.0'
+	compile 'com.amqtech:perms-helper:1.0.0'
 }
 ````
 
