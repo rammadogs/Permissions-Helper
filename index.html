@@ -37,17 +37,7 @@
 <h1>
 <a id="compile-in-your-project" class="anchor" href="#compile-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compile in your Project</h1>
 
-<p>Add this in your root build.gradle file (not your module build.gradle file):</p>
-
-<pre><code>allprojects {
-    repositories {
-        ...
-        maven { url "https://dl.bintray.com/andrew-quebe/maven" }
-    }
-}
-</code></pre>
-
-<p>Next, add the dependency in your module:</p>
+<p>The library is on jCenter by default. Add this in your app's build.gradle file:</p>
 
 <pre><code>dependencies {
     compile 'com.amqtech:perms-helper:1.0.0'
