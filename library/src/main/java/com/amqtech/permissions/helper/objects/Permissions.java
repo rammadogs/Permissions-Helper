@@ -54,6 +54,7 @@ public enum Permissions implements Serializable {
     public static final String READ_PHONE_STATE_EXPLANATION = "Allows this app to read call information.";
     public static final String CALL_PHONE_EXPLANATION = "Allows this app to make phone calls.";
     public static final String READ_CALL_LOG_EXPLANATION = "Allows this app to access your call logs.";
+    public static final String WRITE_CALL_LOG_EXPLANATION = "Allows this app to edit your call logs.";
     public static final String ADD_VOICEMAIL_EXPLANATION = "Allows this app to add voicemails.";
     public static final String USE_SIP_EXPLANATION = "Allows this app to use SIP service.";
     public static final String PROCESS_OUTGOING_CALLS_EXPLANATION = "Allows this app to see the number being dialed during an outgoing call with the option to redirect the call to a different number or abort the call altogether";

@@ -3,7 +3,6 @@ package com.amqtech.permissions.helper.ui.activity;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,7 +15,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.amqtech.permissions.helper.R;
@@ -45,8 +43,8 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(darkenColor(getIntent().getExtras().getInt(PermissionsActivity.STATUS_BAR_COLOR), 0.8f));
-        window.setNavigationBarColor(darkenColor(getIntent().getExtras().getInt(PermissionsActivity.NAVIGATION_BAR_COLOR), 0.8f));
+        window.setStatusBarColor(getIntent().getExtras().getInt(PermissionsActivity.STATUS_BAR_COLOR));
+        window.setNavigationBarColor(getIntent().getExtras().getInt(PermissionsActivity.NAVIGATION_BAR_COLOR));
 
         if (getIntent().getExtras().getBoolean(PermissionsActivity.LIGHT_STATUS_BAR)) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -58,15 +56,15 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         setContentView(R.layout.activity_permissions_flow);
 
         TextView infoTV = (TextView) findViewById(R.id.perms_flow_info);
-        infoTV.setText(PermissionsActivity.APP_NAME
+        infoTV.setText(getIntent().getExtras().getString(PermissionsActivity.APP_NAME)
                 + " " + getResources().getString(R.string.perms_static_info));
         infoTV.setTextColor(getIntent().getExtras().getInt(PermissionsActivity.MAIN_TEXT_COLOR));
 
-        RelativeLayout rel = (RelativeLayout) findViewById(R.id.perms_bg);
-        rel.setBackgroundColor(getIntent().getExtras().getInt(PermissionsActivity.BG_COLOR));
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.perms_bg);
+        linearLayout.setBackgroundColor(getIntent().getExtras().getInt(PermissionsActivity.BG_COLOR));
 
-        LinearLayout ll = (LinearLayout) findViewById(R.id.button_bar);
-        ll.setBackgroundColor(getIntent().getExtras().getInt(PermissionsActivity.BAR_COLOR));
+        LinearLayout buttonBar = (LinearLayout) findViewById(R.id.button_bar);
+        buttonBar.setBackgroundColor(getIntent().getExtras().getInt(PermissionsActivity.BAR_COLOR));
 
         TextView header = (TextView) findViewById(R.id.perms_flow_header);
         header.setTextColor(getIntent().getExtras().getInt(PermissionsActivity.MAIN_TEXT_COLOR));
@@ -76,6 +74,7 @@ public class PermissionsFlowActivity extends AppCompatActivity {
 
         PermissionsFlowAdapter permissionsFlowAdapter = new PermissionsFlowAdapter(permissions,
                 getIntent().getExtras().getInt(PermissionsActivity.MAIN_TEXT_COLOR),
+                getIntent().getExtras().getInt(PermissionsActivity.MAIN_TEXT_COLOR_SECONDARY),
                 getIntent().getExtras().getInt(PermissionsActivity.ICON_COLOR));
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -125,19 +124,4 @@ public class PermissionsFlowActivity extends AppCompatActivity {
         //should never happen
         return null;
     }
-
-    /**
-     * Darkens a color based on the float value entered.
-     *
-     * @param color  your color int.
-     * @param factor 0.1 = 90% dark; 0.9 = 10% dark.
-     * @return Color int.
-     */
-    public static int darkenColor(int color, float factor) {
-        float[] hsv = new float[3];
-        Color.colorToHSV(color, hsv);
-        hsv[2] *= factor;
-        return Color.HSVToColor(hsv);
-    }
-
 }

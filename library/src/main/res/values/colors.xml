@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="perms_flow_bgcolor">#009688</color>
-    <color name="perms_flow_bgcolor_dark">#007065</color>
-    <color name="txt_clr_white">#ffffff</color>
+    <color name="default_background_color">#009688</color>
+    <color name="default_background_dark_color">#00897B</color>
+    <color name="default_nav_bar_background_color">#000</color>
+    <color name="default_text_color_primary">#fff</color>
+    <color name="default_text_color_secondary">#b3ffffff</color>
+    <color name="default_icon_color">#fff</color>
 </resources>

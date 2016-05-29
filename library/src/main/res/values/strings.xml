@@ -1,9 +1,10 @@
 <resources>
-    <string name="app_name">Permissions Helper</string>
-    <string name="perms_static_header">Permissions Needed</string>
+    <string name="perms_static_header">Permissions needed</string>
     <string name="perms_static_info">needs the following permissions to work correctly. Review them below:</string>
+
     <string name="cancel">Cancel</string>
     <string name="contnu">Continue</string>
+
     <string name="read_cal">Read Calendar</string>
     <string name="write_cal">Write Calendar</string>
     <string name="cam">Camera</string>
@@ -28,5 +29,6 @@
     <string name="receive_mms">Receive MMS</string>
     <string name="r_ext_storage">Read External Storage</string>
     <string name="w_ext_storage">Write External Storage</string>
+
     <string name="perm_icon_desc">Permission icon</string>
 </resources>
