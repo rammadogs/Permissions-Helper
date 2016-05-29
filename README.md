@@ -54,6 +54,8 @@ new PermissionsActivity(getBaseContext())
     .launch();
 ```
 
+The color methods are optional, and have default already set. The `withAppName()`, `withPermissions()`, `withPermissionsFlowCallback()`, and `launch()` are required for the activity to work properly. Also, these methods are called only once. You don't need to call `withPermissions()` for each permission you are requesting, but rahter pass all of them in one method call. [Refer to the sample app](https://github.com/Andrew-Quebe/Permissions-Helper/blob/master/sample/src/main/java/com/amqtech/permissions/sample/MainActivity.java#L76) to see how this is done.
+
 ## Default Explanations
 The library comes preloaded with default permission explanations if you wish to use them.
 
