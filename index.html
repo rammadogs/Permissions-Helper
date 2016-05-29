@@ -29,19 +29,69 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h1>
-<a id="permissions-helper" class="anchor" href="#permissions-helper" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permissions-Helper</h1>
+<a id="permissions-helper---" class="anchor" href="#permissions-helper---" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permissions-Helper <a href="https://bintray.com/andrew-quebe/maven/Permissions-Helper/_latestVersion"> <img src="https://api.bintray.com/packages/andrew-quebe/maven/Android-Permission-Helper/images/download.svg" alt="Download"> </a>
+</h1>
 
 <p>A library that generates an activity based on the required permissions for your app. It loads the permissions into a list and will request them upon continuing through the activity flow.</p>
 
 <h1>
+<a id="compile-in-your-project" class="anchor" href="#compile-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compile in your Project</h1>
+
+<p>Add this in your root build.gradle file (not your module build.gradle file):</p>
+
+<pre><code>allprojects {
+    repositories {
+        ...
+        maven { url "https://dl.bintray.com/andrew-quebe/maven" }
+    }
+}
+</code></pre>
+
+<p>Next, add the dependency in your module:</p>
+
+<pre><code>dependencies {
+    compile 'com.amqtech:perms-helper:1.0.0'
+}
+</code></pre>
+
+<h1>
 <a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to Use</h1>
 
-<p>Coming soon!</p>
+<p>To launch the permissions activity, simply write the following code:</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Sample set up that explains to the user that you need access to device location.</span>
+<span class="pl-k">new</span> <span class="pl-smi">PermissionsActivity</span>(getBaseContext())
+        .withAppName(getResources()<span class="pl-k">.</span>getString(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>app_name))
+        .withPermissions(<span class="pl-k">new</span> <span class="pl-smi">Permission</span>(<span class="pl-smi">Permissions</span><span class="pl-c1"><span class="pl-k">.</span>ACCESS_FINE_LOCATION</span>, <span class="pl-s"><span class="pl-pds">"</span>This app needs access to your location to improve results.<span class="pl-pds">"</span></span>))
+        .withPermissionFlowCallback(<span class="pl-k">new</span> <span class="pl-smi">PermissionsActivity</span>.<span class="pl-smi">PermissionFlowCallback</span>() {
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onPermissionGranted</span>(<span class="pl-smi">Permission</span> <span class="pl-v">permission</span>) {
+                <span class="pl-c">// if the permission was granted</span>
+
+            }
+
+            <span class="pl-k">@Override</span>
+            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onPermissionDenied</span>(<span class="pl-smi">Permission</span> <span class="pl-v">permission</span>) {
+                <span class="pl-c">// if the permission was denied</span>
+
+            }
+        })
+        <span class="pl-c">// Optional background color</span>
+        .setBackgroundColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>))
+        <span class="pl-c">// Optional bar color</span>
+        .setBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>))
+        <span class="pl-c">// Optional text color</span>
+        .setTextColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#EEEEEE<span class="pl-pds">"</span></span>))
+        <span class="pl-c">// Optional status bar color</span>
+        .setStatusBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>))
+        <span class="pl-c">// Optional navigation bar color</span>
+        .setNavBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>);
+        .launch();</pre></div>
 
 <h1>
 <a id="java-documentation" class="anchor" href="#java-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java Documentation</h1>
 
-<p>If you would like to view the Javadocs for this library, <a href="https://cdn.rawgit.com/Andrew-Quebe/Android-Helper/master/javadoc/index.html">click here.</a></p>
+<p>If you would like to view the Javadocs for this library, <a href="https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/master/javadoc/index.html">click here.</a></p>
 
 <h1>
 <a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributions</h1>
