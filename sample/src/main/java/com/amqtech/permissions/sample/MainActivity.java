@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 Permissions.BODY_SENSORS_EXPLANATION);
         Permission sms = new Permission(Permissions.SEND_SMS,
                 Permissions.SEND_SMS_EXPLANATION);
-        Permission storage = new Permission(Permissions.WRITE_EXTERNAL_STORAGE,
+        Permission storage = new Permission(Permissions.READ_EXTERNAL_STORAGE,
                 Permissions.WRITE_EXTERNAL_STORAGE_EXPLANATION);
 
         new PermissionsActivity(getBaseContext())

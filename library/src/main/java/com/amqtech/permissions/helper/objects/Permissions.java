@@ -39,7 +39,7 @@ public enum Permissions implements Serializable {
     READ_SMS(Manifest.permission.READ_SMS, 383),
     RECEIVE_WAP_PUSH(Manifest.permission.RECEIVE_WAP_PUSH, 384),
     RECEIVE_MMS(Manifest.permission.RECEIVE_MMS, 385),
-    READ_EXTERAL_STORAGE(Manifest.permission.READ_EXTERNAL_STORAGE, 386),
+    READ_EXTERNAL_STORAGE(Manifest.permission.READ_EXTERNAL_STORAGE, 386),
     WRITE_EXTERNAL_STORAGE(Manifest.permission.WRITE_EXTERNAL_STORAGE, 387);
 
     public static final String READ_CALENDAR_EXPLANATION = "Allows this app to read your calendar events.";
