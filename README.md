@@ -2,18 +2,7 @@
 A library that generates an activity based on the required permissions for your app. It loads the permissions into a list and will request them upon continuing through the activity flow.
 
 # Compile in your Project
-Add this in your root build.gradle file (not your module build.gradle file):
-
-```
-allprojects {
-	repositories {
-		...
-		maven { url "https://dl.bintray.com/andrew-quebe/maven" }
-	}
-}
-```
-
-Next, add the dependency in your module:
+The library is on jCenter by default. Add this in your app's build.gradle file:
 
 ```
 dependencies {
