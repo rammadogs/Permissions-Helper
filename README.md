@@ -16,32 +16,50 @@ To launch the permissions activity, simply write the following code:
 ``` java
 // Sample set up that explains to the user that you need access to device location.
 new PermissionsActivity(getBaseContext())
-        .withAppName(getResources().getString(R.string.app_name))
-        .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
-        .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
-            @Override
-            public void onPermissionGranted(Permission permission) {
-        		// if the permission was granted
-                
-            }
+	// Your app name. You MUST set this, otherwise bad things will happen!
+    .withAppName(getResources().getString(R.string.app_name))
+    // The permissions you need
+    .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, Permissions.ACCESS_FINE_LOCATION))
+    // Callback
+    .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
+        @Override
+        public void onPermissionGranted(Permission permission) {
+    		// if the permission was granted
+            
+        }
 
-            @Override
-            public void onPermissionDenied(Permission permission) {
-                // if the permission was denied
-                
-            }
-        })
-        // Optional background color
-        .setBackgroundColor(Color.parseColor("#3F51B5"))
-        // Optional bar color
-        .setBarColor(Color.parseColor("#3F51B5"))
-        // Optional text color
-        .setTextColor(Color.parseColor("#EEEEEE"))
-        // Optional status bar color
-        .setStatusBarColor(Color.parseColor("#3F51B5"))
-        // Optional navigation bar color
-        .setNavBarColor(Color.parseColor("#3F51B5");
-        .launch();
+        @Override
+        public void onPermissionDenied(Permission permission) {
+            // if the permission was denied
+            
+        }
+    })
+    // Set status bar color
+    .setStatusBarColor(Color.parseColor("#ffffff"))
+    // Set status bar icon color - true = dark icons; false (default) = light icons
+    .isStatusBarLight(true)
+    // Set background color
+    .setBackgroundColor(Color.parseColor("#ffffff"))
+    // Set background color behind the buttons
+    .setBarColor(Color.parseColor("#ffffff"))
+    // Set main text color 
+    .setMainTextColor(Color.parseColor("#444444"))
+    // Set bar button text color
+    .setBarTextColor(Color.parseColor("#444444"))
+    // Set navigation bar color
+    .setNavBarColor(Color.parseColor("#ffffff"))
+    // Change color of icons - it is advised that this be the same color as your text
+    .setIconColor(Color.parseColor("#444444"))
+    // Launch the permissions activity
+    .launch();
+```
+
+## Default Explanations
+The library comes preloaded with default permission explanations if you wish to use them.
+
+``` java
+// Example
+new Permission(Permissions.ACCESS_FINE_LOCATION, Permissions.ACCESS_FINE_LOCATION_EXPLANATION)
 ```
 
 # Java Documentation
@@ -73,5 +91,4 @@ limitations under the License.
 ```
 
 # Apps that use this library
-None yet! Check back later.
-
+None yet! If you would like your app listed here, please make a new issue with your app's name, Play Store link, and screenshots proving your usage. Please do not post alpha/beta opt-in links.
