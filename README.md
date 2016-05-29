@@ -54,6 +54,8 @@ new PermissionsActivity(getBaseContext())
     .launch();
 ```
 
+The color methods are optional, and have defaults already set. The `withAppName()`, `withPermissions()`, `withPermissionsFlowCallback()`, and `launch()` methods are required for the library to work properly. Also, these methods are called only once. You don't need to call `withPermissions()` for each permission you are requesting, but rather pass all of them in one method call. [Refer to the sample app](https://github.com/Andrew-Quebe/Permissions-Helper/blob/master/sample/src/main/java/com/amqtech/permissions/sample/MainActivity.java#L76) to see how this is done.
+
 ## Default Explanations
 The library comes preloaded with default permission explanations if you wish to use them.
 
@@ -92,3 +94,11 @@ limitations under the License.
 
 # Apps that use this library
 None yet! If you would like your app listed here, please make a new issue with your app's name, Play Store link, and screenshots proving your usage. Please do not post alpha/beta opt-in links.
+
+# My Inspiration
+
+I was exploring the Android Auto app when I noticed the way they present required permissions to the user. That got me thinking that I could create a library that does exactly that. 
+
+|        <img>       |    <img>   |
+|:------------------:|:----------:|
+| (Google's Version) | My Version |
