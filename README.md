@@ -1,4 +1,4 @@
-# Permissions-Helper [![](https://jitpack.io/v/Andrew-Quebe/Permissions-Helper.svg)](https://jitpack.io/#Andrew-Quebe/Permissions-Helper)
+# Permissions-Helper
 A library that generates an activity based on the required permissions for your app. It loads the permissions into a list and will request them upon continuing through the activity flow.
 
 # Compile in your Project
@@ -25,7 +25,7 @@ dependencies {
 Coming soon!
 
 # Java Documentation
-If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Android-Helper/master/javadoc/index.html)
+If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/tree/master/javadoc)
 
 # Contributions
 If you'd like to contribute to this library, feel free to make a pull request with your changes. 
