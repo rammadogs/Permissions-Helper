@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchContactsPermsFlow(View view) {
         new PermissionsActivity(getBaseContext())
-                .withPermissions(new Permission(Permissions.READ_CONTACTS, "This app needs access to your contacts to improve results."))
+                .withPermissions(new Permission(Permissions.READ_CONTACTS, Permissions.READ_CONTACTS_EXPLANATION))
                 .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
                     @Override
                     public void onPermissionGranted(Permission permission) {
