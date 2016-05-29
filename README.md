@@ -6,7 +6,7 @@ The library is on jCenter by default. Add this in your app's build.gradle file:
 
 ```
 dependencies {
-	compile 'com.amqtech:perms-helper:1.0.0'
+	compile 'com.amqtech:perms-helper:1.0.1'
 }
 ````
 
