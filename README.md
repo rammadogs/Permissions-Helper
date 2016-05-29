@@ -19,7 +19,7 @@ new PermissionsActivity(getBaseContext())
 	// Your app name. You MUST set this, otherwise bad things will happen!
     .withAppName(getResources().getString(R.string.app_name))
     // The permissions you need
-    .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
+    .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, Permissions.ACCESS_FINE_LOCATION))
     // Callback
     .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
         @Override
@@ -54,6 +54,14 @@ new PermissionsActivity(getBaseContext())
     .launch();
 ```
 
+## Default Explanations
+The library comes preloaded with default permission explanations if you wish to use them.
+
+``` java
+// Example
+new Permission(Permissions.ACCESS_FINE_LOCATION, Permissions.ACCESS_FINE_LOCATION_EXPLANATION)
+```
+
 # Java Documentation
 If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/master/javadoc/index.html)
 
@@ -83,5 +91,4 @@ limitations under the License.
 ```
 
 # Apps that use this library
-None yet! Check back later.
-
+None yet! If you would like your app listed here, please make a new issue with your app's name, Play Store link, and screenshots proving your usage. Please do not post alpha/beta opt-in links.
