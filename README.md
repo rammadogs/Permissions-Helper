@@ -22,7 +22,38 @@ dependencies {
 ````
 
 # How to Use
-Coming soon!
+To launch the permissions activity, simply write the following code:
+
+``` java
+// 
+new PermissionsActivity(getBaseContext())
+        .withAppName(getResources().getString(R.string.app_name))
+        .withPermissions(new Permission(Permissions.ACCESS_FINE_LOCATION, "This app needs access to your location to improve results."))
+        .withPermissionFlowCallback(new PermissionsActivity.PermissionFlowCallback() {
+            @Override
+            public void onPermissionGranted(Permission permission) {
+        		// if the permission was granted
+                
+            }
+
+            @Override
+            public void onPermissionDenied(Permission permission) {
+                // if the permission was denied
+                
+            }
+        })
+        // Optional background color
+        .setBackgroundColor(Color.parseColor("#3F51B5"))
+        // Optional bar color
+        .setBarColor(Color.parseColor("#3F51B5"))
+        // Optional text color
+        .setTextColor(Color.parseColor("#EEEEEE"))
+        // Optional status bar color
+        .setStatusBarColor(Color.parseColor("#3F51B5"))
+        // Optional navigation bar color
+        .setNavBarColor(Color.parseColor("#3F51B5");
+        .launch();
+```
 
 # Java Documentation
 If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/master/javadoc/index.html)
