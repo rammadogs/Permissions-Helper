@@ -94,3 +94,11 @@ limitations under the License.
 
 # Apps that use this library
 None yet! If you would like your app listed here, please make a new issue with your app's name, Play Store link, and screenshots proving your usage. Please do not post alpha/beta opt-in links.
+
+# My Inspiration
+
+I was exploring the Android Auto app when I noticed the way they present required permissions to the user. That got me thinking that I could create a library that does exactly that. 
+
+|        <img>       |    <img>   |
+|:------------------:|:----------:|
+| (Google's Version) | My Version |
