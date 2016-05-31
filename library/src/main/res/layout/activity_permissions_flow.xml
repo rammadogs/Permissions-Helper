@@ -37,7 +37,9 @@
             android:id="@+id/perms_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp" />
 
         <LinearLayout
             android:id="@+id/button_bar"
