@@ -6,7 +6,7 @@ The library is on jCenter by default. Add this in your app's build.gradle file:
 
 ```
 dependencies {
-	compile 'com.amqtech:perms-helper:1.0.1'
+	compile 'com.amqtech:perms-helper:1.0.2'
 }
 ````
 
@@ -69,6 +69,11 @@ If you would like to view the Javadocs for this library, [click here.](https://c
 
 # Contributions
 If you'd like to contribute to this library, feel free to make a pull request with your changes. 
+
+## Contributors
+Patrick J - [Google+](https://plus.google.com/+PatrickJung42/about) | [Github](https://github.com/pddstudio)
+
+Heinrich Reimer - [Google+](https://plus.google.com/+HeinrichReimer) | [Github](https://github.com/HeinrichReimer)
 
 # Developer Info
 Andrew Quebe<br>
