@@ -29,7 +29,7 @@
       <div class="inner clearfix">
         <section id="main-content">
           <h1>
-<a id="permissions-helper---" class="anchor" href="#permissions-helper---" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permissions-Helper <a href="https://bintray.com/andrew-quebe/maven/Permissions-Helper/_latestVersion"> <img src="https://api.bintray.com/packages/andrew-quebe/maven/Android-Permission-Helper/images/download.svg" alt="Download"> </a>
+<a id="permissions-helper---" class="anchor" href="#permissions-helper---" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Permissions-Helper <a href="https://bintray.com/andrew-quebe/maven/Android-Permission-Helper/_latestVersion"> <img src="https://api.bintray.com/packages/andrew-quebe/maven/Android-Permission-Helper/images/download.svg" alt="Download"> </a>
 </h1>
 
 <p>A library that generates an activity based on the required permissions for your app. It loads the permissions into a list and will request them upon continuing through the activity flow.</p>
@@ -40,7 +40,7 @@
 <p>The library is on jCenter by default. Add this in your app's build.gradle file:</p>
 
 <pre><code>dependencies {
-    compile 'com.amqtech:perms-helper:1.0.0'
+    compile 'com.amqtech:perms-helper:1.0.2'
 }
 </code></pre>
 
@@ -51,32 +51,52 @@
 
 <div class="highlight highlight-source-java"><pre><span class="pl-c">// Sample set up that explains to the user that you need access to device location.</span>
 <span class="pl-k">new</span> <span class="pl-smi">PermissionsActivity</span>(getBaseContext())
-        .withAppName(getResources()<span class="pl-k">.</span>getString(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>app_name))
-        .withPermissions(<span class="pl-k">new</span> <span class="pl-smi">Permission</span>(<span class="pl-smi">Permissions</span><span class="pl-c1"><span class="pl-k">.</span>ACCESS_FINE_LOCATION</span>, <span class="pl-s"><span class="pl-pds">"</span>This app needs access to your location to improve results.<span class="pl-pds">"</span></span>))
-        .withPermissionFlowCallback(<span class="pl-k">new</span> <span class="pl-smi">PermissionsActivity</span>.<span class="pl-smi">PermissionFlowCallback</span>() {
-            <span class="pl-k">@Override</span>
-            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onPermissionGranted</span>(<span class="pl-smi">Permission</span> <span class="pl-v">permission</span>) {
-                <span class="pl-c">// if the permission was granted</span>
+    <span class="pl-c">// Your app name. You MUST set this, otherwise bad things will happen!</span>
+    .withAppName(getResources()<span class="pl-k">.</span>getString(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>app_name))
+    <span class="pl-c">// The permissions you need</span>
+    .withPermissions(<span class="pl-k">new</span> <span class="pl-smi">Permission</span>(<span class="pl-smi">Permissions</span><span class="pl-c1"><span class="pl-k">.</span>ACCESS_FINE_LOCATION</span>, <span class="pl-smi">Permissions</span><span class="pl-c1"><span class="pl-k">.</span>ACCESS_FINE_LOCATION</span>))
+    <span class="pl-c">// Callback</span>
+    .withPermissionFlowCallback(<span class="pl-k">new</span> <span class="pl-smi">PermissionsActivity</span>.<span class="pl-smi">PermissionFlowCallback</span>() {
+        <span class="pl-k">@Override</span>
+        <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onPermissionGranted</span>(<span class="pl-smi">Permission</span> <span class="pl-v">permission</span>) {
+            <span class="pl-c">// if the permission was granted</span>
 
-            }
+        }
 
-            <span class="pl-k">@Override</span>
-            <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onPermissionDenied</span>(<span class="pl-smi">Permission</span> <span class="pl-v">permission</span>) {
-                <span class="pl-c">// if the permission was denied</span>
+        <span class="pl-k">@Override</span>
+        <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onPermissionDenied</span>(<span class="pl-smi">Permission</span> <span class="pl-v">permission</span>) {
+            <span class="pl-c">// if the permission was denied</span>
 
-            }
-        })
-        <span class="pl-c">// Optional background color</span>
-        .setBackgroundColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>))
-        <span class="pl-c">// Optional bar color</span>
-        .setBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>))
-        <span class="pl-c">// Optional text color</span>
-        .setTextColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#EEEEEE<span class="pl-pds">"</span></span>))
-        <span class="pl-c">// Optional status bar color</span>
-        .setStatusBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>))
-        <span class="pl-c">// Optional navigation bar color</span>
-        .setNavBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#3F51B5<span class="pl-pds">"</span></span>);
-        .launch();</pre></div>
+        }
+    })
+    <span class="pl-c">// Set status bar color</span>
+    .setStatusBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#ffffff<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Set status bar icon color - true = dark icons; false (default) = light icons</span>
+    .isStatusBarLight(<span class="pl-c1">true</span>)
+    <span class="pl-c">// Set background color</span>
+    .setBackgroundColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#ffffff<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Set background color behind the buttons</span>
+    .setBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#ffffff<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Set main text color </span>
+    .setMainTextColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#444444<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Set bar button text color</span>
+    .setBarTextColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#444444<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Set navigation bar color</span>
+    .setNavBarColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#ffffff<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Change color of icons - it is advised that this be the same color as your text</span>
+    .setIconColor(<span class="pl-smi">Color</span><span class="pl-k">.</span>parseColor(<span class="pl-s"><span class="pl-pds">"</span>#444444<span class="pl-pds">"</span></span>))
+    <span class="pl-c">// Launch the permissions activity</span>
+    .launch();</pre></div>
+
+<p>The color methods are optional, and have defaults already set. The <code>withAppName()</code>, <code>withPermissions()</code>, <code>withPermissionsFlowCallback()</code>, and <code>launch()</code> methods are required for the library to work properly. Also, these methods are called only once. You don't need to call <code>withPermissions()</code> for each permission you are requesting, but rather pass all of them in one method call. <a href="https://github.com/Andrew-Quebe/Permissions-Helper/blob/master/sample/src/main/java/com/amqtech/permissions/sample/MainActivity.java#L76">Refer to the sample app</a> to see how this is done.</p>
+
+<h2>
+<a id="default-explanations" class="anchor" href="#default-explanations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Default Explanations</h2>
+
+<p>The library comes preloaded with default permission explanations if you wish to use them.</p>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">// Example</span>
+<span class="pl-k">new</span> <span class="pl-smi">Permission</span>(<span class="pl-smi">Permissions</span><span class="pl-c1"><span class="pl-k">.</span>ACCESS_FINE_LOCATION</span>, <span class="pl-smi">Permissions</span><span class="pl-c1"><span class="pl-k">.</span>ACCESS_FINE_LOCATION_EXPLANATION</span>)</pre></div>
 
 <h1>
 <a id="java-documentation" class="anchor" href="#java-documentation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java Documentation</h1>
@@ -87,6 +107,13 @@
 <a id="contributions" class="anchor" href="#contributions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributions</h1>
 
 <p>If you'd like to contribute to this library, feel free to make a pull request with your changes. </p>
+
+<h2>
+<a id="contributors" class="anchor" href="#contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Contributors</h2>
+
+<p>Patrick J - <a href="https://plus.google.com/+PatrickJung42/about">Google+</a> | <a href="https://github.com/pddstudio">Github</a></p>
+
+<p>Heinrich Reimer - <a href="https://plus.google.com/+HeinrichReimer">Google+</a> | <a href="https://github.com/HeinrichReimer">Github</a></p>
 
 <h1>
 <a id="developer-info" class="anchor" href="#developer-info" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developer Info</h1>
@@ -115,7 +142,27 @@ limitations under the License.
 <h1>
 <a id="apps-that-use-this-library" class="anchor" href="#apps-that-use-this-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Apps that use this library</h1>
 
-<p>None yet! Check back later.</p>
+<p>None yet! If you would like your app listed here, please make a new issue with your app's name, Play Store link, and screenshots proving your usage. Please do not post alpha/beta opt-in links.</p>
+
+<h1>
+<a id="my-inspiration" class="anchor" href="#my-inspiration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>My Inspiration</h1>
+
+<p>I was exploring the Android Auto app when I noticed the way they present required permissions to the user. That got me thinking that I could create a library that does exactly that. </p>
+
+<table>
+<thead>
+<tr>
+<th align="center">(Google's Version)</th>
+<th align="center">(My Version)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><img width="640" src="https://github.com/Andrew-Quebe/Permissions-Helper/blob/master/artwork/google.png"></td>
+<td align="center"><img width="640" src="https://github.com/Andrew-Quebe/Permissions-Helper/blob/master/artwork/mine.png"></td>
+</tr>
+</tbody>
+</table>
         </section>
 
         <aside id="sidebar">
