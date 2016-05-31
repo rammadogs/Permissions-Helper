@@ -60,8 +60,8 @@ The color methods are optional, and have defaults already set. The `withAppName(
 The library comes preloaded with default permission explanations if you wish to use them.
 
 ``` java
-// Example
-new Permission(Permissions.ACCESS_FINE_LOCATION, Permissions.ACCESS_FINE_LOCATION_EXPLANATION)
+// Example - you don't need a second parameter for using the default explanations.
+new Permission(Permissions.ACCESS_FINE_LOCATION)
 ```
 
 # Java Documentation
