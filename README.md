@@ -71,6 +71,10 @@ new Permission(Permissions.ACCESS_FINE_LOCATION)
 # Java Documentation
 If you would like to view the Javadocs for this library, [click here.](https://cdn.rawgit.com/Andrew-Quebe/Permissions-Helper/master/javadoc/index.html)
 
+# Developer Info
+Andrew Quebe<br>
+[andrewquebe@amqtech.com](mailto:andrewquebe@amqtech.com)
+
 # Contributions
 If you'd like to contribute to this library, feel free to make a pull request with your changes. 
 
@@ -78,10 +82,6 @@ If you'd like to contribute to this library, feel free to make a pull request wi
 Patrick J - [Google+](https://plus.google.com/+PatrickJung42/about) | [Github](https://github.com/pddstudio)
 
 Heinrich Reimer - [Google+](https://plus.google.com/+HeinrichReimer) | [Github](https://github.com/HeinrichReimer)
-
-# Developer Info
-Andrew Quebe<br>
-[andrewquebe@amqtech.com](mailto:andrewquebe@amqtech.com)
 
 # License
 
