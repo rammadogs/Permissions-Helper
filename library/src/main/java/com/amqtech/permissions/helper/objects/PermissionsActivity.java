@@ -3,12 +3,14 @@ package com.amqtech.permissions.helper.objects;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.graphics.ColorUtils;
 import android.text.TextUtils;
@@ -368,10 +370,16 @@ public class PermissionsActivity implements Serializable {
             throw new RuntimeException("You need to supply at least one permission!");
         }
 
+        List<Permission> permissionList = permissionsDenied(permissions);
+
+        if (permissionList == null || permissionList.isEmpty()){
+            return;
+        }
+
         permissionsActivity = this;
         Intent permissionActivity = new Intent(launchContext, PermissionsFlowActivity.class);
         permissionActivity.putExtra(APP_NAME, appName);
-        permissionActivity.putExtra(PERMISSIONS, permissions.toArray(new Permission[permissions.size()]));
+        permissionActivity.putExtra(PERMISSIONS, permissionList.toArray(new Permission[permissionList.size()]));
         permissionActivity.putExtra(BG_COLOR, bgColor);
         permissionActivity.putExtra(BAR_COLOR, barColor);
         permissionActivity.putExtra(MAIN_TEXT_COLOR, mainTextColor);
@@ -383,5 +391,21 @@ public class PermissionsActivity implements Serializable {
         permissionActivity.putExtra(ICON_COLOR, iconColor);
         permissionActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         launchContext.startActivity(permissionActivity);
+    }
+
+    private List<Permission> permissionsDenied(List<Permission> permissions){
+
+        List<Permission> permissionList = new ArrayList<>();
+        PackageManager pm = launchContext.getPackageManager();
+
+        for (Permission p : permissions){
+            int hasPerm = pm.checkPermission(p.getPermissions().getPermission(),launchContext.getPackageName());
+            if (hasPerm != PackageManager.PERMISSION_GRANTED) {
+
+                permissionList.add(p);
+            }
+        }
+
+        return permissionList;
     }
 }
