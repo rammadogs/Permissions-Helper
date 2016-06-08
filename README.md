@@ -83,7 +83,7 @@ Patrick J - [Google+](https://plus.google.com/+PatrickJung42/about) | [Github](h
 
 Heinrich Reimer - [Google+](https://plus.google.com/+HeinrichReimer) | [Github](https://github.com/HeinrichReimer)
 
-Rodrigo Martins
+Rodrigo Martins - [Github](https://github.com/policante)
 
 # License
 
